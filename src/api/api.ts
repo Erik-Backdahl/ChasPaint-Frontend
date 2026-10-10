@@ -1,7 +1,10 @@
-import type { CanvasState, Pixel } from "./types";
+import type { CanvasState, Pixel } from "../types";
 
-// Set VITE_API_URL in a .env file, e.g. VITE_API_URL=http://localhost:5000
-const BASE = import.meta.env.VITE_API_URL ?? "";
+export const BASE = import.meta.env.VITE_API_URL;
+
+
+
+
 
 export class CooldownError extends Error {
   constructor(public retryAfterSeconds: number) {
@@ -9,16 +12,14 @@ export class CooldownError extends Error {
   }
 }
 
-/** ADAPT: change the URL / response mapping to match your backend. */
 export async function getCanvas(): Promise<CanvasState> {
-  const res = await fetch(`${BASE}/api/canvas`);
+  const res = await fetch(`${BASE}/api/Canvas/points`);
   if (!res.ok) throw new Error(`Failed to load canvas (${res.status})`);
   return res.json();
 }
 
-/** ADAPT: change the URL / body to match your backend. */
 export async function placePixel(pixel: Pixel): Promise<void> {
-  const res = await fetch(`${BASE}/api/pixels`, {
+  const res = await fetch(`${BASE}/api/Canvas/update`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(pixel),

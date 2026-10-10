@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/api.ts","./src/main.tsx","./src/types.ts","./src/components/Palette.tsx","./src/components/PlaceCanvas.tsx"],"version":"5.9.3"}
+{"root":["./src/authprovider.tsx","./src/app.tsx","./src/main.tsx","./src/types.ts","./src/api/userservice.ts","./src/api/api.ts","./src/components/authform.tsx","./src/components/header.tsx","./src/components/layout.tsx","./src/components/palette.tsx","./src/components/placecanvas.tsx","./src/pages/canvaspage.tsx","./src/pages/loginpage.tsx","./src/pages/registerpage.tsx"],"version":"5.9.3"}

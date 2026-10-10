@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import PlaceCanvas from "../components/PlaceCanvas";
 import Palette, { PALETTE } from "../components/Palette";
-import { CooldownError, getCanvas, placePixel } from "../api";
+import { CooldownError, getCanvas, placePixel } from "../api/CanvasService";
 import type { CanvasState } from "../types";
-import Header from "../components/Header";
 
 const POLL_MS = 2000; // how often to refresh the board from the backend
 
