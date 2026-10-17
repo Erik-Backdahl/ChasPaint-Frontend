@@ -4,18 +4,27 @@ import "./AuthForm.css";
 type AuthFormProps = {
   title: string;
   loadingLabel: string;
-  onSubmit: (email: string, password: string) => Promise<void>;
+  submitButtonLabel: string;
+  onSubmit: (
+    email: string,
+    username: string,
+    password: string,
+  ) => Promise<void>;
   children?: ReactNode;
+  hasUsernameField?: Boolean;
 };
 
 export default function AuthForm({
   title,
   loadingLabel,
+  submitButtonLabel,
   onSubmit,
   children,
+  hasUsernameField,
 }: AuthFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +34,7 @@ export default function AuthForm({
     setLoading(true);
 
     try {
-      await onSubmit(email, password);
+      await onSubmit(email, username, password);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Något gick fel");
     } finally {
@@ -39,6 +48,16 @@ export default function AuthForm({
         <h1 className="auth-title">{title}</h1>
 
         <form className="auth-form" onSubmit={handleSubmit}>
+          {hasUsernameField ? (
+            <input
+              className="input"
+              type="username"
+              placeholder="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          ) : null}
           <input
             className="input"
             type="email"
@@ -57,7 +76,7 @@ export default function AuthForm({
           />
           {error && <p className="auth-error">{error}</p>}
           <button type="submit" className="btn btn-submit" disabled={loading}>
-            {loadingLabel}
+            {loading ? loadingLabel : submitButtonLabel}
           </button>
         </form>
 

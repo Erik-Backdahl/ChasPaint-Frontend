@@ -1,16 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import PlaceCanvas from "../components/PlaceCanvas";
 import Palette, { PALETTE } from "../components/Palette";
-import { CooldownError, getCanvas, placePixel } from "../api/CanvasService";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, CooldownError, getCanvas, placePixel } from "../api/CanvasService";
 import type { CanvasState } from "../types";
 
 const POLL_MS = 2000; // how often to refresh the board from the backend
 
-// Size of the local grid used when the backend can't be reached
-const OFFLINE_WIDTH = 100;
-const OFFLINE_HEIGHT = 100;
+const WIDTH = CANVAS_WIDTH
+const HEIGHT = CANVAS_HEIGHT
 
-function emptyBoard(width = OFFLINE_WIDTH, height = OFFLINE_HEIGHT): CanvasState {
+function emptyBoard(width = WIDTH, height = HEIGHT): CanvasState {
   return { width, height, pixels: new Array(width * height).fill("#ffffff") };
 }
 

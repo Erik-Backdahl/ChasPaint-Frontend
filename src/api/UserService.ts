@@ -5,7 +5,13 @@ interface LoginInfo {
   password: string
 }
 
-async function request(path: string, method: string, body?: LoginInfo): Promise<Response> {
+interface RegisterInfo{
+  email: string,
+  username: string,
+  password: string,
+
+}
+async function request(path: string, method: string, body?: LoginInfo | RegisterInfo): Promise<Response> {
   try {
     return await fetch(`${BASE}${path}`, {
       method: method,
@@ -27,8 +33,8 @@ export async function login(email: string, password: string): Promise<void> {
     throw new Error("Wrong email or password");
 }
 
-export async function register(email: string, password: string): Promise<void> {
-  const res = await request("/account/register", "POST", { email, password });
+export async function register(email: string, username: string, password: string): Promise<void> {
+  const res = await request("/account/register", "POST", { email, username, password });
 
   if (!res.ok)
     throw new Error("Unable to create account");

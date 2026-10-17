@@ -14,6 +14,7 @@ export default function LoginPage() {
   return (
     <AuthForm
       title="Logga in"
+      submitButtonLabel="Logga in"
       loadingLabel="Loggar in..."
       onSubmit={handleLogin}
     >
@@ -28,10 +29,6 @@ export default function LoginPage() {
           onClick={() => navigate("/login/registrera")}
         >
           Registrera
-        </button>
-        <button type="button" className="btn btn-google">
-          <img src={googleIcon} alt="" className="google-icon" />
-          Logga in med Google
         </button>
       </section>
     </AuthForm>

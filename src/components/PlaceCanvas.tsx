@@ -91,7 +91,7 @@ export default function PlaceCanvas({
         return { scale, x: mx - (mx - v.x) * k, y: my - (my - v.y) * k };
       });
     };
-    el.addEventListener("wheel", onWheel, { passive: true });
+    el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 

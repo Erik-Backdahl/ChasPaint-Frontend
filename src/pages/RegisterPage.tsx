@@ -5,9 +5,13 @@ import { login, register } from "../api/UserService";
 export default function RegisterPage() {
   const navigate = useNavigate();
 
-  async function handleRegister(email: string, password: string) {
-    await register(email, password);
-    await login(email, password); 
+  async function handleRegister(
+    email: string,
+    username: string,
+    password: string,
+  ) {
+    await register(email, username, password);
+    await login(email, password);
     navigate("/");
   }
 
@@ -15,7 +19,9 @@ export default function RegisterPage() {
     <AuthForm
       title="Registrera"
       loadingLabel="Skapar konto..."
+      submitButtonLabel="Registrera"
       onSubmit={handleRegister}
+      hasUsernameField={true}
     />
   );
 }
