@@ -25,7 +25,7 @@ export default function LoginPage() {
       <section className="alt-actions">
         <button
           type="button"
-          className="btn btn-register"
+          className="btn-register"
           onClick={() => navigate("/login/registrera")}
         >
           Registrera

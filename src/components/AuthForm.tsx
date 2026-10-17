@@ -75,7 +75,7 @@ export default function AuthForm({
             required
           />
           {error && <p className="auth-error">{error}</p>}
-          <button type="submit" className="btn btn-submit" disabled={loading}>
+          <button type="submit" className="btn-submit" disabled={loading}>
             {loading ? loadingLabel : submitButtonLabel}
           </button>
         </form>

@@ -6,12 +6,26 @@ body {
   color: #d7dadc;
 }
 
+.divider{
+  display: block;
+  text-align: center;
+  margin: 0.5rem;
+  font-size: larger;
+}
+
+.btn-register{
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #e6e6e6;
+  background-color: #1f1f21;
+  border: 1px solid #45454a;
+  border-radius: 6px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
 .app { display: flex; flex-direction: column; height: 100%; }
 
-.topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 16px; background: #272729; border-bottom: 1px solid #343536;
-}
 .topbar h1 { margin: 0; font-size: 18px; color: #ff4500; }
 .coords { font-family: ui-monospace, monospace; font-size: 14px; }
 

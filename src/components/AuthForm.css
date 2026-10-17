@@ -6,6 +6,23 @@
   padding: 0 1rem;
 }
 
+.btn-submit
+{
+  
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  font-size: 1rem;
+  color: #e6e6e6;
+  background-color: #1f1f21;
+  border: 1px solid #45454a;
+  border-radius: 6px;
+}
+.btn-submit:hover{
+  background-color: #424246;
+}
+
+
 .auth-wrapper {
   width: 100%;
   max-width: 340px;
