@@ -14,9 +14,9 @@ export default function Header() {
       <div>
         <div className="navbar-actions">
           {user ? (
-            <button onClick={logout}>logga ut</button>
+            <button onClick={logout}>logga Ut</button>
           ) : (
-            <button onClick={() => navigate("/login")}>logga in</button>
+            <button onClick={() => navigate("/login")}>logga In</button>
           )}
         </div>
       </div>
