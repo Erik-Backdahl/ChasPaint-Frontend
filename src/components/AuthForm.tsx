@@ -5,13 +5,15 @@ type AuthFormProps = {
   title: string;
   loadingLabel: string;
   submitButtonLabel: string;
-  onSubmit: (
-    email: string,
-    username: string,
-    password: string,
-  ) => Promise<void>;
+  onSubmit: ({ email, username, password }: AuthFormValues) => Promise<void>;
   children?: ReactNode;
-  hasUsernameField?: Boolean;
+  hasUsernameField?: boolean;
+};
+
+export type AuthFormValues = {
+  email: string;
+  password: string;
+  username: string;
 };
 
 export default function AuthForm({
@@ -34,7 +36,7 @@ export default function AuthForm({
     setLoading(true);
 
     try {
-      await onSubmit(email, username, password);
+      await onSubmit({ email, username, password });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Något gick fel");
     } finally {

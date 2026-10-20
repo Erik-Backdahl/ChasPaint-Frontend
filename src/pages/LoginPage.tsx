@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router";
-import AuthForm from "../components/AuthForm";
+import AuthForm, { AuthFormValues } from "../components/AuthForm";
 import { login } from "../api/UserService";
 import googleIcon from "../assets/Google__G__logo.svg.png";
+import { useAuth } from "../AuthProvider";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { refreshUser } = useAuth();
 
-  async function handleLogin(email: string, password: string) {
-    await login(email, password);
+  async function handleLogin(values: AuthFormValues) {
+    await login(values);
+    await refreshUser();
     navigate("/");
   }
 
@@ -33,4 +36,4 @@ export default function LoginPage() {
       </section>
     </AuthForm>
   );
-}   
+}

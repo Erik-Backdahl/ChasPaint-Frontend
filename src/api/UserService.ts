@@ -1,3 +1,4 @@
+import { AuthFormValues } from "../components/AuthForm";
 import { BASE } from "./CanvasService";
 
 interface LoginInfo {
@@ -5,7 +6,7 @@ interface LoginInfo {
   password: string
 }
 
-interface RegisterInfo{
+interface RegisterInfo {
   email: string,
   username: string,
   password: string,
@@ -26,15 +27,15 @@ async function request(path: string, method: string, body?: LoginInfo | Register
 
 
 
-export async function login(email: string, password: string): Promise<void> {
+export async function login({ email, password }: AuthFormValues): Promise<void> {
   const res = await request("/login?useCookies=true", "POST", { email, password });
 
   if (!res.ok)
     throw new Error("Wrong email or password");
 }
 
-export async function register(email: string, username: string, password: string): Promise<void> {
-  const res = await request("/account/register", "POST", { email, username, password });
+export async function register({ email, password, username }: AuthFormValues): Promise<void> {
+  const res = await request("/account/register", "POST", { email, password, username });
 
   if (!res.ok)
     throw new Error("Unable to create account");
