@@ -24,6 +24,8 @@ jobs:
           node-version: '24.x'
 
       - name: npm install, build, and test
+        env:
+          VITE_API_URL: ${{ vars.VITE_API_URL}}
         run: |
           npm install
           npm run build --if-present
